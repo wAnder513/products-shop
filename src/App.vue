@@ -37,9 +37,9 @@ export default {
   },
   methods: {
     getProducts () {
-      axios.get('https://dev-su.eda1.ru/test_task/products.php').then(res => {
-        this.products = res.data.products
-      })
+      // axios.get('https://dev-su.eda1.ru/test_task/products.php').then(res => {
+      //   this.products = res.data.products
+      // })
     },
     addProducts (product) {
       this.selectedProducts.push(product)
