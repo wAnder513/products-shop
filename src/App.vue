@@ -12,6 +12,9 @@
         ></product-description>
       </div>
     </div>
+    <div class="app-footer">
+      <div class="app-footer_text">very intrasting tail</div>
+    </div>
   </div>
 </template>
 
@@ -53,6 +56,7 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-size: 20px;
 }
 
 button {
@@ -67,7 +71,7 @@ button {
   color: #ffffff;
   width: 1440px;
   padding: 0 15px;
-  background-color: rgb(177, 177, 14);
+  margin: 0 auto;
 }
 
 .app-header {
@@ -84,5 +88,19 @@ button {
 
 .app-description {
   display: flex;
+  margin-bottom: 50px;
+}
+
+.app-footer {
+  height: 220px;
+  background-color: black;
+  margin: 0 -15px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.app-footer_text {
+  margin-left: auto;
 }
 </style>

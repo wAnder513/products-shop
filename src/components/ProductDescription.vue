@@ -1,12 +1,8 @@
 <template>
   <div class="product-description">
-    <div>
-      <div>
+    <div class="product-description_wrapper">
+      <div class="product-description_container">
         <div>Название товара</div>
-        <div></div>
-      </div>
-
-      <div calss="product-description_container">
         <div class="product-description_right">
           <div class="product-description_counter">
             Количество
@@ -16,8 +12,16 @@
           </div>
         </div>
       </div>
-    </div>
 
+      <template v-if="hasSelectedProducts">
+        <product-description-order
+          v-for="product in selectedProducts"
+          :key="product.id"
+          :product="product"
+        >
+        </product-description-order>
+      </template>
+    </div>
     <hr class="product-description-hr" />
 
     <product-save-button @send-order="sendOrder"></product-save-button>
@@ -25,12 +29,18 @@
 </template>
 
 <script>
+import ProductDescriptionOrder from './ProductDescriptionOrder.vue'
 import ProductSaveButton from './ProductSaveButton.vue'
 
 export default {
-  components: { ProductSaveButton },
+  components: { ProductSaveButton, ProductDescriptionOrder },
   props: {
     selectedProducts: { type: Array }
+  },
+  computed: {
+    hasSelectedProducts () {
+      return this.selectedProducts && this.selectedProducts.length > 0
+    }
   },
   methods: {
     sendOrder () {
@@ -55,9 +65,12 @@ export default {
   margin-right: 50px;
 }
 
+.product-description_wrapper {
+  margin-bottom: 260px;
+}
+
 .product-description_right {
   display: flex;
-  margin-bottom: 260px;
 }
 
 .product-description-hr {
@@ -67,7 +80,16 @@ export default {
   margin-bottom: 65px;
 }
 
+.product-description_order {
+  display: flex;
+  justify-content: space-between;
+}
+
 .product-description_container {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
+  color: #2fa6ea;
 }
 </style>
